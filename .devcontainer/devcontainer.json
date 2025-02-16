@@ -1,0 +1,41 @@
+{
+    "name": "django-template",
+    "dockerComposeFile": [
+        "docker-compose.dev.yml"
+    ],
+    "service": "django-template",
+    "workspaceFolder": "/workspace",
+    "forwardPorts": [
+        8000
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-azuretools.vscode-docker", // Enable Docker linting, debugging, and more
+                "tamasfe.even-better-toml", // TOML language support
+                "mutantdino.resourcemonitor", // Monitor CPU, memory, and disk usage
+                "ms-python.python", // Python language support
+                "ms-python.mypy-type-checker", // Static type checker for Python
+                "charliermarsh.ruff", // Ruff language support
+                "batisteo.vscode-django" // Django language support
+            ],
+            "settings": {
+                "[python]": {
+                    "editor.formatOnSave": true,
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll": "explicit",
+                        "source.organizeImports": "explicit"
+                    },
+                    "editor.defaultFormatter": "charliermarsh.ruff"
+                },
+                "python.languageServer": "Default", // Disable the Python language server
+                "python.terminal.activateEnvInCurrentTerminal": true, // Automatically activate the Python environment in the terminal
+                "python.terminal.activateEnvironment": true, // Automatically activate the Python environment in the terminal
+                "python.analysis.autoImportCompletions": true, // Automatically import modules when completing symbols
+                "mypy-type-checker.importStrategy": "fromEnvironment",
+                "mypy-type-checker.reportingScope": "workspace",
+                "mypy-type-checker.preferDaemon": true
+            }
+        }
+    }
+}
