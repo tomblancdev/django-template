@@ -15,6 +15,7 @@
             "extensions": [
                 "ms-azuretools.vscode-docker", // Enable Docker linting, debugging, and more
                 "tamasfe.even-better-toml", // TOML language support
+                "redhat.vscode-yaml", // YAML language support
                 "mutantdino.resourcemonitor", // Monitor CPU, memory, and disk usage
                 "ms-python.python", // Python language support
                 "ms-python.mypy-type-checker", // Static type checker for Python
