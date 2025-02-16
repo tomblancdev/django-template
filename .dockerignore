@@ -1,0 +1,15 @@
+.devcontainer/
+.github/
+.git/
+.vscode/
+.gitattributes
+.gitignore
+.Dockerfile
+.README.md
+.pre-commit-config.yaml
+.venv/
+# all mount folders
+**/.mnt
+**/.mount
+**/mnt
+**/mount

@@ -169,3 +169,9 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# all mount folders
+**/.mnt
+**/.mount
+**/mnt
+**/mount

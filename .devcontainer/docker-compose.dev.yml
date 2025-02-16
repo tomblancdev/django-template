@@ -1,0 +1,37 @@
+services:
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ../.mnt/db:/var/lib/postgresql/data
+
+  django-template: &base
+    build:
+      context: ../
+      dockerfile: Dockerfile
+      target: development
+      tags:
+        - django-template:latest
+      args:
+        USER: user
+        USER_GROUP: user
+        USER_PASSWORD: password
+        USER_SUDO: true
+        UID: 1001
+        GID: 1001
+        USER_SHELL: /bin/zsh
+        # POETRY
+        POETRY_HOME: /etc/poetry
+        POETRY_VIRTUALENVS_IN_PROJECT: true
+        # POETRY_VERSION: 1.1.4
+        # Development
+        WORKSPACE: /workspace # directory where the project is located
+    volumes:
+      - ../:/workspace
+
+volumes:
+  ..:
