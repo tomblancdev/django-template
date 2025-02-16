@@ -13,3 +13,5 @@
 **/.mount
 **/mnt
 **/mount
+# pre commit
+**/.pre-commit-config.yaml
