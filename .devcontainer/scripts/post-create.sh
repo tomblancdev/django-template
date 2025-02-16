@@ -5,4 +5,7 @@ if [ -d .git ]; then
     pre-commit install
 fi
 
+# Install poetry
+poetry install
+
 exit 0
