@@ -58,20 +58,21 @@ RUN chsh -s $(which zsh)
 RUN chsh -s $(which zsh) ${USER}
 
 ## POETRY installation
-ARG POETRY_HOME=/etc/poetry
-ARG POETRY_VERSION
-ARG POETRY_VIRTUALENVS_IN_PROJECT=true
-ENV POETRY_HOME=${POETRY_HOME}
-ENV POETRY_VIRTUALENVS_IN_PROJECT=${POETRY_VIRTUALENVS_IN_PROJECT}
+ARG UV_INSTALL_DIR=/etc/uv
+ARG UV_VERSION=0.6.1
+ENV UV_INSTALL_DIR=${UV_INSTALL_DIR}
 
-RUN if [ -z ${POETRY_VERSION} ]; then \
-    curl -sSL https://install.python-poetry.org | python3 -; \
+RUN if [ -z ${UV_VERSION} ]; then \
+    curl -LsSf https://astral.sh/uv/install.sh | sh; \
     else \
-    curl -sSL https://install.python-poetry.org | python3 - --version ${POETRY_VERSION}; \
+    curl -LsSf https://astral.sh/uv/${UV_VERSION}/install.sh | sh; \
     fi
 
-ENV PATH="${POETRY_HOME}/bin:${PATH}"
+ENV PATH="${UV_INSTALL_DIR}:${PATH}"
 
+# Add uv autocomplete to zsh
+RUN echo 'eval "$(uv generate-shell-completion zsh)"' >> /root/.zshrc
+RUN echo 'eval "$(uv generate-shell-completion zsh)"' >> /home/${USER}/.zshrc
 
 FROM builder AS development
 # Set Arguments

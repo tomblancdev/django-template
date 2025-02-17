@@ -25,9 +25,8 @@ services:
         GID: 1001
         USER_SHELL: /bin/zsh
         # POETRY
-        POETRY_HOME: /etc/poetry
-        POETRY_VIRTUALENVS_IN_PROJECT: true
-        # POETRY_VERSION: 1.1.4
+        UV_INSTALL_DIR: /etc/uv
+        UV_VERSION: 0.6.1
         # Development
         WORKSPACE: /workspace # directory where the project is located
     volumes:
