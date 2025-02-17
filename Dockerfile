@@ -61,6 +61,7 @@ RUN chsh -s $(which zsh) ${USER}
 ARG UV_INSTALL_DIR=/etc/uv
 ARG UV_VERSION=0.6.1
 ENV UV_INSTALL_DIR=${UV_INSTALL_DIR}
+ENV UV_CACHE_DIR=./.cache
 
 RUN if [ -z ${UV_VERSION} ]; then \
     curl -LsSf https://astral.sh/uv/install.sh | sh; \
